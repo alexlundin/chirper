@@ -44,7 +44,8 @@
         </div>
         <div class="navbar-end gap-2">
             @auth
-                <span class="trxt-sm">{{ auth()->user()->name }}</span>    
+                <span class="trxt-sm">{{ auth()->user()->name }}</span>
+                <a href="{{ route('personal') }}">My Chirps</a>
                 <form method="POST" action="/logout" class="inline">
                     @csrf
                     <button type="submit" class="btn btn-ghost btn-sm">Logout</button>

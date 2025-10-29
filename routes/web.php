@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\ChirpController;
+use App\Http\Controllers\PersonalChirpController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ChirpController::class, 'index']);
@@ -11,6 +12,10 @@ Route::get('/', [ChirpController::class, 'index']);
 Route::middleware('auth')->group(function() {
     Route::resource('chirps', ChirpController::class)
         ->only(['store', 'edit', 'update', 'destroy']);
+
+    Route::get('/my-chirps', PersonalChirpController::class)
+        ->name('personal');
+    
 });
 
 
