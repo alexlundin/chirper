@@ -12,7 +12,10 @@ class PersonalChirpController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $chirps =  auth()->user()->chirps()->get();
+        $chirps =  auth()
+                    ->user()
+                    ->chirps()
+                    ->get();
         return view('personal.chirp', compact('chirps'));
     }
 }
