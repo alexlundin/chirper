@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Chirp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PersonalChirpController extends Controller
 {
@@ -12,10 +12,10 @@ class PersonalChirpController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $chirps =  auth()
-                    ->user()
-                    ->chirps()
-                    ->get();
+        $chirps = Auth::user()
+            ->chirps()
+            ->get();
+
         return view('personal.chirp', compact('chirps'));
     }
 }
